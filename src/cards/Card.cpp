@@ -1,13 +1,17 @@
-#include "Card.h"
 #include <string>
 #include <sstream>
+#include <iostream>
+
+#include "Card.h"
+
+using namespace std;
 
 Card::Card(int price) {
 	this->price = price;
 }
 
 Card::~Card() {
-
+	cout << "~Card" << endl;
 }
 
 void Card::apply(Game *) {

@@ -1,24 +1,27 @@
-#include "Player.h"
-#include "cards/CardGenerator.h"
 #include <iostream>
+
+#include "Player.h"
+#include "Game.h"
+#include "cards/CardGenerator.h"
+#include "GUI.h"
 
 using namespace std;
 
 
 int main(int argc, char **argv)
 {
-	Player player1, player2;
+	GUI::clear();
+	Player 	player1(GUI::getUserName()),
+			player2(GUI::getUserName());
 
-	CardGenerator *generator = CardGenerator::getInstance();
-
-	for (int i = 0; i < 4; ++i) {
-		player1.addCard(generator->getHandCard());
-		player2.addCard(generator->getHandCard());
+	Game *game = NULL;
+	do {
+		delete game;
+		game = new Game(&player1, &player2);
 	}
+	while (game->play());
 
-	player1.printCards();
-	player2.printCards();
-
+	cout << "Good bye!" << endl;
 	return 0;
 }
 

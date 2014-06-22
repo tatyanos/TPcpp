@@ -3,23 +3,29 @@
 
 #include <string>
 #include <vector>
+
 #include "cards/Card.h"
+
+using namespace std;
 
 class Player {
 private:
-  std::string name;
-  size_t money;
-  std::vector<Card *> cards;
+	string name;
+	unsigned int victories;
+	vector<Card *> *cards;
 public:
-	
-  bool addCard(Card *);
-  void printCards() const;
 
-  void nextCard();
-  void stop();
-  void chooseCard();
-  Player();
-  ~Player();
+	void addCard(Card *);
+	void printCards() const;
+	void cleanCards();
+	unsigned int getVictory() const;
+
+	void nextCard();
+	void stop();
+	void chooseCard();
+
+	Player(string);
+	~Player();
 };
 
 #endif
