@@ -3,6 +3,7 @@
 #include <stdlib.h>
 
 #include "GUI.h"
+#include "Game.h"
 
 using namespace std;
 
@@ -10,6 +11,9 @@ GUI::GUI(Player *player1, Player *player2, Game *game) {
 	this->player1 = player1;
 	this->player2 = player2;
 	this->game = game;
+
+	// todo remove
+	game->play();
 }
 
 void GUI::print() {

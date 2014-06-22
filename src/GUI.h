@@ -5,6 +5,8 @@
 
 #include "Player.h"
 
+class Game;
+
 using namespace std;
 
 class GUI {

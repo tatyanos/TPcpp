@@ -14,11 +14,7 @@ public:
 	Game (Player*, Player*);
 	bool play();
 private:
-	void putPlayerInfo ();
-	void getPlayerInfo ();
 	void round();
-	size_t compare ();
-
 };
 
 #endif

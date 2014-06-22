@@ -3,9 +3,9 @@
 
 #include <string>
 #include <ostream>
-enum colors {Green, Gold, Red, Blue};
 
-class Game;
+#include "../Game.h"
+enum colors {Green, Gold, Red, Blue};
 
 class Card {
 protected:	

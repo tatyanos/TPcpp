@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include "GUI.h"
+#include "cards/Card.h"
 
 using namespace std;
 
