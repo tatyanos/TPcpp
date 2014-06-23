@@ -1,4 +1,5 @@
 #include "Player.h"
+#include "Game.h"
 #include <iostream>
 
 #include <iostream>
@@ -20,6 +21,12 @@ Player::~Player() {
 
 void Player::addCard(Card * card) {
 	cards->push_back(card);
+}
+
+Card *Player::extractCard(int index) {
+	Card *card = (*cards)[index - 1];
+	cards->erase(cards->begin() + index - 1);
+	return card;
 }
 
 void Player::cleanCards() {

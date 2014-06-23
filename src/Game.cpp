@@ -44,15 +44,26 @@ void Game::round() {
 	generator->getHandCard()->apply(tableCards1, &sum1);
 	generator->getHandCard()->apply(tableCards2, &sum2);
 	gui->print();
-	gui->getTurn();
-	gui->getTurn();
+
+	int answer1, answer2;
+	answer1 = gui->getTurn();
+	if (answer1 > 0) {
+		player1->extractCard(answer1)->apply(tableCards1, &sum1);
+	}
+	gui->print();
+
+	answer2 = gui->getTurn();
+	if (answer2 > 0) {
+		player2->extractCard(answer2)->apply(tableCards2, &sum2);
+	}
+	gui->print();
 }
 
-int Game::getSum1() {
+int Game::getSum1() const{
 	return sum1;
 }
 
-int Game::getSum2() {
+int Game::getSum2() const{
 	return sum2;
 }
 

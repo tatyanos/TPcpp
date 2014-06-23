@@ -18,7 +18,9 @@ public:
 	void addCard(Card *);
 	void printCards() const;
 	void cleanCards();
+	Card *extractCard(int);
 	unsigned int getVictory() const;
+
 
 	void nextCard();
 	void stop();
