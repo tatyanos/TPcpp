@@ -9,9 +9,9 @@ protected:
 	CardGenerator();	
  
 public:
-	static CardGenerator* getInstance();
+	static CardGenerator *getInstance();
 
-	Card * getHandCard();
+	Card *getHandCard();
 
 	~CardGenerator();
 private:

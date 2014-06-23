@@ -21,8 +21,7 @@ private:
 	Game *game;
 
 	string getSum();
-	string getHandCard();
-	string getCard();
+
 
 };
 

@@ -12,6 +12,8 @@ private:
 	vector<Card *> *tableCards1;
 	vector<Card *> *tableCards2;
 	GUI *gui;
+	void round();
+
 public:
 	Game (Player*, Player*);
 	~Game ();
@@ -20,8 +22,6 @@ public:
 	int getSum2() const;
 	void printCard1(int);
 	void printCard2(int);
-private:
-	void round();
 };
 
 #endif
