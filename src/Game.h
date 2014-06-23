@@ -16,6 +16,8 @@ public:
 	Game (Player*, Player*);
 	~Game ();
 	bool play();
+	int getSum1();
+	int getSum2();
 private:
 	void round();
 };

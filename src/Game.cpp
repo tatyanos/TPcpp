@@ -39,11 +39,20 @@ bool Game::play() {
 }
 
 void Game::round() {
+	gui->print();
 	CardGenerator *generator = CardGenerator::getInstance();
 	generator->getHandCard()->apply(tableCards1, &sum1);
 	generator->getHandCard()->apply(tableCards2, &sum2);
 	//getTurn()
 	gui->print();
+}
+
+int Game::getSum1() {
+	return sum1;
+}
+
+int Game::getSum2() {
+	return sum2;
 }
 
 Game::~Game() {
