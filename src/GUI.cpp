@@ -19,7 +19,7 @@ GUI::GUI(Player *player1, Player *player2, Game *game) {
 void GUI::print() {
 	GUI::clear();
 
-	cout << "    Player1   " << 15 << " | " << 20 << "   Player2" << endl;
+	cout << "    Player1   " << //game->getSum1() << " | " << game->getSum2()   << "   Player2" << endl;
 	cout << "+1" << "  " << "**" << "                        " << "* "<< " " << 12 << endl;
 	cout << "+1" << "         " << " 1 2 3" << " " << "-1-1-1"<< "         " << 12 << endl;
 	cout << "?1" << "         " << " 4+5-6" << " " << "-2-2-2"<< "         " << 12 << endl;

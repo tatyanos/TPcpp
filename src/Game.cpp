@@ -42,9 +42,12 @@ void Game::round() {
 	CardGenerator *generator = CardGenerator::getInstance();
 	generator->getHandCard()->apply(tableCards1, &sum1);
 	generator->getHandCard()->apply(tableCards2, &sum2);
+	//getTurn()
+	gui->print();
 }
 
 Game::~Game() {
 	delete(tableCards1);
 	delete(tableCards2);
+	delete(gui);
 }
