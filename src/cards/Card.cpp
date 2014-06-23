@@ -21,7 +21,7 @@ void Card::apply(vector<Card *> *tableCards, int *sum) {
 
 std::ostream& operator<<(std::ostream& os, const Card& card)
 {
-    os << "card " << card.price;
+    os << " " << card.price;
     return os;
 }
 

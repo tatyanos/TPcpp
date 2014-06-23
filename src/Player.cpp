@@ -2,7 +2,6 @@
 #include "Game.h"
 #include <iostream>
 
-#include <iostream>
 #include "GUI.h"
 #include "cards/Card.h"
 
@@ -44,4 +43,8 @@ void Player::printCards() const {
 
 unsigned int Player::getVictory() const {
 	return victories;
+}
+
+void Player::printCard(int index) {
+	cout << *(*cards)[index];
 }

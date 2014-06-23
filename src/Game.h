@@ -18,6 +18,8 @@ public:
 	bool play();
 	int getSum1() const;
 	int getSum2() const;
+	void printCard1(int);
+	void printCard2(int);
 private:
 	void round();
 };

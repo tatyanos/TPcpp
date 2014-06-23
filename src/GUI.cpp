@@ -20,10 +20,10 @@ void GUI::print() {
 	GUI::clear();
 
 	cout << "    Player1   " << game->getSum1() << " | " << game->getSum2()   << "   Player2" << endl;
-	cout << "+1" << "  " << "**" << "                        " << "* "<< " " << 12 << endl;
-	cout << "+1" << "         " << " 1 2 3" << " " << "-1-1-1"<< "         " << 12 << endl;
-	cout << "?1" << "         " << " 4+5-6" << " " << "-2-2-2"<< "         " << 12 << endl;
-	cout << "-1" << "         " << "+7+8+9" << " " << "-2-2-2"<< "         " << 12 << endl;
+	player1->printCard(0); cout << "  " << "**" << "                        " << "* "<< " "; player2->printCard(0); cout << endl;
+	player1->printCard(1); cout << "         "; game->printCard1(0); game->printCard1(1); game->printCard1(2); cout << " " << "-1-1-1"<< "         "; player2->printCard(1); cout << endl;
+	player1->printCard(2); cout << "         "; game->printCard1(3); game->printCard1(4); game->printCard1(5); cout  << " " << "-2-2-2"<< "         "; player2->printCard(2); cout << endl;
+	player1->printCard(3); cout << "         "; game->printCard1(6); game->printCard1(7); game->printCard1(8); cout  << " " << "-2-2-2"<< "         "; player2->printCard(3); cout << endl;
 }
 
 string GUI::getSum() {

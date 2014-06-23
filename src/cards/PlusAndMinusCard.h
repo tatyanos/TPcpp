@@ -10,7 +10,9 @@ private:
   size_t tie_flag;
 public:
   PlusAndMinusCard ();
+  std::string toString();
 private:
   int cardAction ();
+};
 
 #endif

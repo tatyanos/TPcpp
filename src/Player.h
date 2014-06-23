@@ -19,6 +19,7 @@ public:
 	void printCards() const;
 	void cleanCards();
 	Card *extractCard(int);
+	void printCard(int);
 	unsigned int getVictory() const;
 
 

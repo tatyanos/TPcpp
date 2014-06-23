@@ -2,6 +2,9 @@
 #include "cards/Card.h"
 #include "cards/CardGenerator.h"
 
+#include <iostream>
+using namespace std;
+
 const unsigned int PLAYER_CARDS = 4;
 const unsigned int VICTORY = 3;
 
@@ -65,6 +68,25 @@ int Game::getSum1() const{
 
 int Game::getSum2() const{
 	return sum2;
+}
+
+
+void Game::printCard1(int index) {
+	if (index < int(tableCards1->size())) {
+	cout << *(*tableCards1)[index];
+	}
+	else {
+		cout << " ";
+	}
+}
+
+void Game::printCard1(int index) {
+	if (index < int(tableCards2->size())) {
+	cout << *(*tableCards2)[index];
+	}
+	else {
+		cout << " ";
+	}
 }
 
 Game::~Game() {
