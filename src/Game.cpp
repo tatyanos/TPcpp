@@ -35,31 +35,57 @@ bool Game::play() {
 
 	do {
 		round();
-		break;
 	}
 	while (victor1 != 3 || victor2 != 3);
 	return false; // like end the games
 }
 
 void Game::round() {
-	gui->print();
+	int next1 = 1, next2 = 1;
 	CardGenerator *generator = CardGenerator::getInstance();
 	generator->getHandCard()->apply(tableCards1, &sum1);
 	generator->getHandCard()->apply(tableCards2, &sum2);
-	gui->print();
 
-	int answer1, answer2;
-	answer1 = gui->getTurn();
-	if (answer1 > 0) {
-		player1->extractCard(answer1)->apply(tableCards1, &sum1);
-	}
-	gui->print();
+	while (sum1 < 20 && sum2 < 20) {
+		gui->print();
 
-	answer2 = gui->getTurn();
-	if (answer2 > 0) {
-		player2->extractCard(answer2)->apply(tableCards2, &sum2);
+		int answer1, answer2;
+		if (next1) {
+			answer1 = gui->getTurn();
+		}
+
+		if (answer1 > 0) {
+			player1->extractCard(answer1)->apply(tableCards1, &sum1);
+		} else if (answer1 == 0) {
+			generator->getHandCard()->apply(tableCards1, &sum1);
+		} else if (answer1 == -1) {
+			next1 = 0;
+		}
+
+		GUI::clear();
+		gui->print();
+
+		if (next2) {
+			answer2 = gui->getTurn();
+		}
+
+		if (answer2 > 0) {
+			player2->extractCard(answer2)->apply(tableCards2, &sum2);
+		} else if (answer2 == 0) {
+			generator->getHandCard()->apply(tableCards2, &sum2);
+		} else if (answer2 == -1) {
+			next2 = 0;
+		}
+		GUI::clear();
+		gui->print();
+		if (sum1 >= 20) {
+			victor2++;
+			break;
+		} else if (sum2 >= 20) {
+			victor1++;
+			break;
+		}
 	}
-	gui->print();
 }
 
 int Game::getSum1() const{
@@ -80,7 +106,7 @@ void Game::printCard1(int index) {
 	}
 }
 
-void Game::printCard1(int index) {
+void Game::printCard2(int index) {
 	if (index < int(tableCards2->size())) {
 	cout << *(*tableCards2)[index];
 	}
