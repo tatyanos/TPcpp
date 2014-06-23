@@ -14,8 +14,9 @@ Card::~Card() {
 	cout << "~Card" << endl;
 }
 
-void Card::apply(Game *) {
-
+void Card::apply(vector<Card *> *tableCards, int *sum) {
+	*sum += price;
+	tableCards->push_back(this);
 }
 
 std::ostream& operator<<(std::ostream& os, const Card& card)

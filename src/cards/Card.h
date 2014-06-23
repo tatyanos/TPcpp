@@ -15,7 +15,7 @@ protected:
 public:
 	Card(int price);
 	virtual ~Card();
-	virtual void apply (Game *);
+	virtual void apply ( vector<Card *> *, int *);
 	friend std::ostream& operator<<(std::ostream& os, const Card& card);
 	std::string toString();
 	template <class T> static std::string convertToString(T);

@@ -13,7 +13,7 @@ GUI::GUI(Player *player1, Player *player2, Game *game) {
 	this->game = game;
 
 	// todo remove
-	game->play();
+	//game->play();
 }
 
 void GUI::print() {

@@ -1,4 +1,5 @@
 #include "Game.h"
+#include "cards/Card.h"
 #include "cards/CardGenerator.h"
 
 const unsigned int PLAYER_CARDS = 4;
@@ -23,6 +24,8 @@ Game::Game(Player *player1, Player *player2) {
 		player2->addCard(generator->getHandCard());
 	}
 
+	tableCards1 = new vector<Card *>();
+	tableCards2 = new vector<Card *>();
 }
 
 bool Game::play() {
@@ -36,5 +39,12 @@ bool Game::play() {
 }
 
 void Game::round() {
+	CardGenerator *generator = CardGenerator::getInstance();
+	generator->getHandCard()->apply(tableCards1, &sum1);
+	generator->getHandCard()->apply(tableCards2, &sum2);
+}
 
+Game::~Game() {
+	delete(tableCards1);
+	delete(tableCards2);
 }
