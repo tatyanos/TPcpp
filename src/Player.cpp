@@ -41,6 +41,10 @@ void Player::printCards() const {
 	}
 }
 
+void Player::printName() {
+	cout << name;
+}
+
 unsigned int Player::getVictory() const {
 	return victories;
 }

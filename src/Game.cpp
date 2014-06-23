@@ -37,6 +37,15 @@ bool Game::play() {
 		round();
 	}
 	while (victor1 != 3 || victor2 != 3);
+	if (victor1 == 3) {
+		cout << "winner is ";
+		player1->printName();
+	} else if (victor2 == 3) {
+		cout << "winner is ";
+		player2->printName();
+	} else {
+		cout << "draw" << endl;
+	}
 	return false; // like end the games
 }
 
@@ -62,7 +71,6 @@ void Game::round() {
 			next1 = 0;
 		}
 
-		GUI::clear();
 		gui->print();
 
 		if (next2) {
@@ -76,15 +84,12 @@ void Game::round() {
 		} else if (answer2 == -1) {
 			next2 = 0;
 		}
-		GUI::clear();
 		gui->print();
-		if (sum1 >= 20) {
-			victor2++;
-			break;
-		} else if (sum2 >= 20) {
-			victor1++;
-			break;
-		}
+	}
+	if (sum1 >= 20) {
+		victor2++;
+	} else if (sum2 >= 20) {
+		victor1++;
 	}
 }
 
@@ -102,7 +107,7 @@ void Game::printCard1(int index) {
 	cout << *(*tableCards1)[index];
 	}
 	else {
-		cout << " ";
+		cout << "   ";
 	}
 }
 

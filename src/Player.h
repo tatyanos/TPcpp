@@ -21,11 +21,7 @@ public:
 	Card *extractCard(int);
 	void printCard(int);
 	unsigned int getVictory() const;
-
-
-	void nextCard();
-	void stop();
-	void chooseCard();
+	void printName();
 
 	Player(string);
 	~Player();
