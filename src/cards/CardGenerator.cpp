@@ -8,8 +8,8 @@ CardGenerator::CardGenerator() {
 	twister.seed(time(NULL));
 }
 
-Card * CardGenerator::getHandCard() {
-	return new Card(getRandomInt());
+CardBase * CardGenerator::getHandCard() {
+	return new CardBase(getRandomInt());
 }
 
 int CardGenerator::getRandomInt() {

@@ -1,5 +1,5 @@
 #include "Game.h"
-#include "cards/Card.h"
+#include "cards/CardBase.h"
 #include "cards/CardGenerator.h"
 
 #include <iostream>
@@ -27,8 +27,8 @@ Game::Game(Player *player1, Player *player2) {
 		player2->addCard(generator->getHandCard());
 	}
 
-	tableCards1 = new vector<Card *>();
-	tableCards2 = new vector<Card *>();
+	tableCards1 = new vector<CardBase *>();
+	tableCards2 = new vector<CardBase *>();
 }
 
 bool Game::play() {
@@ -130,7 +130,7 @@ void Game::printCard2(int index) {
 	}
 }
 
-void Game::deleteTableCards(vector<Card *> *cards) {
+void Game::deleteTableCards(vector<CardBase *> *cards) {
 	for (unsigned int i = 0; i < cards->size(); ++i) {
 		delete (*cards)[i];
 	}

@@ -4,13 +4,13 @@
 #include <string>
 
 #include "GUI.h"
-#include "cards/Card.h"
+#include "cards/CardBase.h"
 
 using namespace std;
 
 Player::Player(string name) {
 	this->name = name;
-	cards = new vector<Card *>();
+	cards = new vector<CardBase *>();
 	victories = 0;
 }
 
@@ -19,14 +19,14 @@ Player::~Player() {
 	delete cards;
 }
 
-void Player::addCard(Card * card) {
+void Player::addCard(CardBase * card) {
 	cards->push_back(card);
 }
 
-Card *Player::extractCard(int index) {
+CardBase *Player::extractCard(int index) {
 	cout << cards->size() << endl;
 
-	Card *card = (*cards)[index - 1];
+	CardBase *card = (*cards)[index - 1];
 	cards->erase(cards->begin() + index - 1);
 
 	cout << cards->size() << endl;

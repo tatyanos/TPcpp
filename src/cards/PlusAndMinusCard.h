@@ -1,9 +1,9 @@
 #ifndef PlusAndMinusCard_H
 #define PlusAndMinusCard_H
 
-#include "Card.h"
+#include "CardBase.h"
  
-class PlusAndMinusCard : public Card {
+class PlusAndMinusCard : public CardBase {
 private:
   size_t value1;
   size_t value2;

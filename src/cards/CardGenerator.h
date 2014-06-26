@@ -3,7 +3,7 @@
 
 #include <boost/random/mersenne_twister.hpp>
 
-#include "Card.h"
+#include "CardBase.h"
 
 class CardGenerator {
 protected:
@@ -15,7 +15,7 @@ protected:
 public:
 	static CardGenerator *getInstance();
 
-	Card *getHandCard();
+	CardBase *getHandCard();
 
 	~CardGenerator();
 private:

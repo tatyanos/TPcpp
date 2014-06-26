@@ -9,11 +9,11 @@ private:
 	int sum1, sum2;
 	unsigned int victor1, victor2;
 	Player *player1, *player2;
-	vector<Card *> *tableCards1;
-	vector<Card *> *tableCards2;
+	vector<CardBase *> *tableCards1;
+	vector<CardBase *> *tableCards2;
 	GUI *gui;
 	void round();
-	void deleteTableCards(vector<Card *> *);
+	void deleteTableCards(vector<CardBase *> *);
 
 public:
 	Game (Player*, Player*);

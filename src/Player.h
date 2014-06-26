@@ -4,7 +4,7 @@
 #include <string>
 #include <vector>
 
-class Card;
+class CardBase;
 
 using namespace std;
 
@@ -12,13 +12,13 @@ class Player {
 private:
 	string name;
 	unsigned int victories;
-	vector<Card *> *cards;
+	vector<CardBase *> *cards;
 public:
 
-	void addCard(Card *);
+	void addCard(CardBase *);
 	void printCards() const;
 	void cleanCards();
-	Card *extractCard(int);
+	CardBase *extractCard(int);
 	void printCard(int);
 	unsigned int getVictory() const;
 	string getName()const;

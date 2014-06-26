@@ -1,8 +1,8 @@
 #ifndef PlusOrMinusCard_H
 #define PlusOrMinusCard_H
-#include "Card.h"
+#include "CardBase.h"
 
-class PlusOrMinusCard : public Card {
+class PlusOrMinusCard : public CardBase {
 public:
 	int value;
 	std::string toString();
