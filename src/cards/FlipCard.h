@@ -9,8 +9,8 @@ private:
   size_t value2;
 public:
   FlipCard ();
+  ~FlipCard ();
 private:
-  int cardAction ();
 };
 
 #endif

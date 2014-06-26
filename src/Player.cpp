@@ -1,6 +1,7 @@
 #include "Player.h"
 #include "Game.h"
 #include <iostream>
+#include <string>
 
 #include "GUI.h"
 #include "cards/Card.h"
@@ -23,8 +24,13 @@ void Player::addCard(Card * card) {
 }
 
 Card *Player::extractCard(int index) {
+	cout << cards->size() << endl;
+
 	Card *card = (*cards)[index - 1];
 	cards->erase(cards->begin() + index - 1);
+
+	cout << cards->size() << endl;
+
 	return card;
 }
 
@@ -41,8 +47,8 @@ void Player::printCards() const {
 	}
 }
 
-void Player::printName() {
-	cout << name;
+string Player::getName() const {
+	return name;
 }
 
 unsigned int Player::getVictory() const {
@@ -50,5 +56,10 @@ unsigned int Player::getVictory() const {
 }
 
 void Player::printCard(int index) {
-	cout << *(*cards)[index];
+	if (index >= 0 && index < (int)(cards->size())) {
+		cout << *(*cards)[index];
+	}
+	else {
+		cout << "  ";
+	}
 }

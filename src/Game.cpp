@@ -32,19 +32,15 @@ Game::Game(Player *player1, Player *player2) {
 }
 
 bool Game::play() {
-
 	do {
 		round();
 	}
-	while (victor1 != 3 || victor2 != 3);
+	while (victor1 < VICTORY && victor2 < VICTORY);
+
 	if (victor1 == 3) {
-		cout << "winner is ";
-		player1->printName();
+		cout << "winner is " << player1->getName() << endl;
 	} else if (victor2 == 3) {
-		cout << "winner is ";
-		player2->printName();
-	} else {
-		cout << "draw" << endl;
+		cout << "winner is " << player2->getName() << endl;
 	}
 	return false; // like end the games
 }
@@ -55,8 +51,8 @@ void Game::round() {
 	generator->getHandCard()->apply(tableCards1, &sum1);
 	generator->getHandCard()->apply(tableCards2, &sum2);
 
+	gui->print();
 	while (sum1 < 20 && sum2 < 20) {
-		gui->print();
 
 		int answer1, answer2;
 		if (next1) {
@@ -84,6 +80,7 @@ void Game::round() {
 		} else if (answer2 == -1) {
 			next2 = 0;
 		}
+
 		gui->print();
 	}
 	if (sum1 >= 20) {
@@ -91,6 +88,11 @@ void Game::round() {
 	} else if (sum2 >= 20) {
 		victor1++;
 	}
+
+	sum1 = 0;
+	sum2 = 0;
+	deleteTableCards(tableCards1);
+	deleteTableCards(tableCards2);
 }
 
 int Game::getSum1() const{
@@ -104,7 +106,7 @@ int Game::getSum2() const{
 
 void Game::printCard1(int index) {
 	if (index < int(tableCards1->size())) {
-	cout << *(*tableCards1)[index];
+		cout << *(*tableCards1)[index];
 	}
 	else {
 		cout << "   ";
@@ -113,15 +115,26 @@ void Game::printCard1(int index) {
 
 void Game::printCard2(int index) {
 	if (index < int(tableCards2->size())) {
-	cout << *(*tableCards2)[index];
+		cout << *(*tableCards2)[index];
 	}
 	else {
 		cout << " ";
 	}
 }
 
+void Game::deleteTableCards(vector<Card *> *cards) {
+	for (unsigned int i = 0; i < cards->size(); ++i) {
+		delete (*cards)[i];
+	}
+	cards->clear();
+}
+
 Game::~Game() {
+	deleteTableCards(tableCards1);
 	delete(tableCards1);
+
+	deleteTableCards(tableCards2);
 	delete(tableCards2);
+
 	delete(gui);
 }

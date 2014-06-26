@@ -4,6 +4,7 @@
 
 class PlusOrMinusCard : public Card {
 public:
+	int value;
 	std::string toString();
 };
 

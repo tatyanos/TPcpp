@@ -11,8 +11,6 @@ private:
 public:
   PlusAndMinusCard ();
   std::string toString();
-private:
-  int cardAction ();
 };
 
 #endif

@@ -21,7 +21,7 @@ public:
 	Card *extractCard(int);
 	void printCard(int);
 	unsigned int getVictory() const;
-	void printName();
+	string getName()const;
 
 	Player(string);
 	~Player();

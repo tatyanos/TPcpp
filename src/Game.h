@@ -13,6 +13,7 @@ private:
 	vector<Card *> *tableCards2;
 	GUI *gui;
 	void round();
+	void deleteTableCards(vector<Card *> *);
 
 public:
 	Game (Player*, Player*);

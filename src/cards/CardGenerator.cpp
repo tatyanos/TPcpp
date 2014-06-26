@@ -5,15 +5,15 @@
 CardGenerator * CardGenerator::instance = 0;
 
 CardGenerator::CardGenerator() {
-	srand(time(NULL));
+	twister.seed(time(NULL));
 }
 
 Card * CardGenerator::getHandCard() {
 	return new Card(getRandomInt());
 }
 
-int CardGenerator::getRandomInt() const {
-	return rand() % 10 + 1;
+int CardGenerator::getRandomInt() {
+	return (twister() % 10) + 1;
 }
 
 CardGenerator::~CardGenerator() {

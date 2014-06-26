@@ -11,7 +11,7 @@ Card::Card(int price) {
 }
 
 Card::~Card() {
-	cout << "~Card" << endl;
+
 }
 
 void Card::apply(vector<Card *> *tableCards, int *sum) {

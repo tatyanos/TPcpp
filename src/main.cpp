@@ -20,6 +20,7 @@ int main(int argc, char **argv)
 		game = new Game(&player1, &player2);
 	}
 	while (game->play());
+	delete game;
 
 	cout << "Good bye!" << endl;
 	return 0;
