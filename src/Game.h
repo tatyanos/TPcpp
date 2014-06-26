@@ -21,6 +21,8 @@ public:
 	bool play();
 	int getSum1() const;
 	int getSum2() const;
+	int getVictor1() const;
+	int getVictor2() const;
 	void printCard1(int);
 	void printCard2(int);
 };

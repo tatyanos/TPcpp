@@ -103,6 +103,14 @@ int Game::getSum2() const{
 	return sum2;
 }
 
+int Game::getVictor1() const{
+	return victor1;
+}
+
+int Game::getVictor2() const{
+	return victor2;
+}
+
 
 void Game::printCard1(int index) {
 	if (index < int(tableCards1->size())) {
