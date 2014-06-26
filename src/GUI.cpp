@@ -36,7 +36,12 @@ string GUI::getUserName() {
 }
 
 void GUI::clear() {
+#ifdef LINUX
 	system("clear");
+#endif
+#ifdef WIN32
+	system("cls");
+#endif
 }
 
 unsigned int GUI::getTurn() {
