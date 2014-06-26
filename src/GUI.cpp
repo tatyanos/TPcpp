@@ -36,7 +36,7 @@ string GUI::getUserName() {
 }
 
 void GUI::clear() {
-#ifdef LINUX
+#ifdef __unix__
 	system("clear");
 #endif
 #ifdef WIN32
