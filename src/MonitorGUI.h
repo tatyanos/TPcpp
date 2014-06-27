@@ -1,5 +1,5 @@
-#ifndef GUI_H
-#define GUI_H
+#ifndef MonitorGUI_H
+#define MonitorGUI_H
 
 #include <string>
 
@@ -9,9 +9,9 @@ class Game;
 
 using namespace std;
 
-class GUI {
+class MonitorGUI {
 public:
-	GUI(Player *, Player *, Game *);
+	MonitorGUI(Player *, Player *, Game *);
 	void print();
 	static string getUserName();
 	static void clear();

@@ -2,19 +2,19 @@
 #include <string>
 #include <stdlib.h>
 
-#include "GUI.h"
+#include "MonitorGUI.h"
 #include "Game.h"
 
 using namespace std;
 
-GUI::GUI(Player *player1, Player *player2, Game *game) {
+MonitorGUI::MonitorGUI(Player *player1, Player *player2, Game *game) {
 	this->player1 = player1;
 	this->player2 = player2;
 	this->game = game;
 }
 
-void GUI::print() {
-	GUI::clear();
+void MonitorGUI::print() {
+	MonitorGUI::clear();
 
 	cout << player1->getName() << " " << game->getSum1() << " | " << game->getSum2() << " " << player2->getName() << endl;
 	player1->printCard(0); cout << "  " << "  " << "                        " << "  "<< " "; player2->printCard(0); cout << endl;
@@ -24,18 +24,18 @@ void GUI::print() {
 	cout << game->getVictor1() << " | " << game-> getVictor2() <<  endl;
 }
 
-string GUI::getSum() {
+string MonitorGUI::getSum() {
 	return " ";// + convertToString(1);
 }
 
-string GUI::getUserName() {
+string MonitorGUI::getUserName() {
 	string name;
 	cout << "enter your name:" << endl;
 	cin >> name;
 	return name;
 }
 
-void GUI::clear() {
+void MonitorGUI::clear() {
 #ifdef __unix__
 	system("clear");
 #endif
@@ -44,7 +44,7 @@ void GUI::clear() {
 #endif
 }
 
-unsigned int GUI::getTurn() {
+unsigned int MonitorGUI::getTurn() {
 	cout << "your turn:" << endl;
 	unsigned int answer;
 	cin >> answer;

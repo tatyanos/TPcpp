@@ -3,7 +3,7 @@
 #include <iostream>
 #include <string>
 
-#include "GUI.h"
+#include "MonitorGUI.h"
 #include "cards/CardSet.h"
 
 using namespace std;

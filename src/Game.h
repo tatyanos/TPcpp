@@ -3,7 +3,7 @@
 
 #include "cards\Card.h"
 #include "Player.h"
-#include "GUI.h"
+#include "MonitorGUI.h"
 
 class Game {
 private:
@@ -13,7 +13,7 @@ private:
 	Card *cards1;
 	Card *cards2;
 
-	GUI *gui;
+	MonitorGUI *gui;
 	void round();
 
 public:

@@ -10,7 +10,7 @@ const unsigned int PLAYER_CARDS = 4;
 const unsigned int VICTORY = 3;
 
 Game::Game(Player *player1, Player *player2) {
-	gui = new GUI(player1, player2, this);
+	gui = new MonitorGUI(player1, player2, this);
 
 	this->player1 = player1;
 	this->player2 = player2;

@@ -3,16 +3,16 @@
 #include "Player.h"
 #include "Game.h"
 #include "cards/CardGenerator.h"
-#include "GUI.h"
+#include "MonitorGUI.h"
 
 using namespace std;
 
 
 int main(int argc, char **argv)
 {
-	GUI::clear();
-	Player 	player1(GUI::getUserName()),
-			player2(GUI::getUserName());
+	MonitorGUI::clear();
+	Player 	player1(MonitorGUI::getUserName()),
+			player2(MonitorGUI::getUserName());
 
 	Game *game = NULL;
 	do {
