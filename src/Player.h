@@ -4,6 +4,8 @@
 #include <string>
 #include <vector>
 
+#include "cards\Card.h"
+
 class CardBase;
 
 using namespace std;
@@ -12,13 +14,12 @@ class Player {
 private:
 	string name;
 	unsigned int victories;
-	vector<CardBase *> *cards;
+	Card* cards;
 public:
 
-	void addCard(CardBase *);
+	void addCard(Card *);
 	void printCards() const;
-	void cleanCards();
-	CardBase *extractCard(int);
+	Card *extractCard(int);
 	void printCard(int);
 	unsigned int getVictory() const;
 	string getName()const;

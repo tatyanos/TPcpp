@@ -1,19 +1,20 @@
 #ifndef Game_H
 #define Game_H
 
+#include "cards\Card.h"
 #include "Player.h"
 #include "GUI.h"
 
 class Game {
 private:
-	int sum1, sum2;
 	unsigned int victor1, victor2;
 	Player *player1, *player2;
-	vector<CardBase *> *tableCards1;
-	vector<CardBase *> *tableCards2;
+
+	Card *cards1;
+	Card *cards2;
+
 	GUI *gui;
 	void round();
-	void deleteTableCards(vector<CardBase *> *);
 
 public:
 	Game (Player*, Player*);

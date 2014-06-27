@@ -15,7 +15,7 @@ protected:
 public:
 	static CardGenerator *getInstance();
 
-	CardBase *getHandCard();
+	Card *getHandCard();
 
 	~CardGenerator();
 private:

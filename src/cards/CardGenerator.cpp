@@ -2,13 +2,15 @@
 #include <stdlib.h>
 #include <time.h>
 
+#include "CardBase.h"
+
 CardGenerator * CardGenerator::instance = 0;
 
 CardGenerator::CardGenerator() {
 	twister.seed(time(NULL));
 }
 
-CardBase * CardGenerator::getHandCard() {
+Card * CardGenerator::getHandCard() {
 	return new CardBase(getRandomInt());
 }
 

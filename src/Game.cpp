@@ -1,5 +1,6 @@
 #include "Game.h"
-#include "cards/CardBase.h"
+#include "cards/Card.h"
+#include "cards/CardSet.h"
 #include "cards/CardGenerator.h"
 
 #include <iostream>
@@ -15,10 +16,6 @@ Game::Game(Player *player1, Player *player2) {
 	this->player2 = player2;
 	victor1 = 0;
 	victor2 = 0;
-	sum1 = 0;
-	sum2 = 0;
-	player1->cleanCards();
-	player2->cleanCards();
 
 	CardGenerator *generator = CardGenerator::getInstance();
 
@@ -27,8 +24,8 @@ Game::Game(Player *player1, Player *player2) {
 		player2->addCard(generator->getHandCard());
 	}
 
-	tableCards1 = new vector<CardBase *>();
-	tableCards2 = new vector<CardBase *>();
+	cards1 = new CardSet();
+	cards2 = new CardSet();
 }
 
 bool Game::play() {
@@ -48,11 +45,14 @@ bool Game::play() {
 void Game::round() {
 	int next1 = 1, next2 = 1;
 	CardGenerator *generator = CardGenerator::getInstance();
-	generator->getHandCard()->apply(tableCards1, &sum1);
-	generator->getHandCard()->apply(tableCards2, &sum2);
+
+	((CardSet *)cards1)->clear();
+	((CardSet *)cards2)->clear();
+	cards1->add(generator->getHandCard());
+	cards2->add(generator->getHandCard());
 
 	gui->print();
-	while (sum1 < 20 && sum2 < 20) {
+	while (cards1->getPrice() < 20 && cards1->getPrice() < 20) {
 
 		int answer1, answer2;
 		if (next1) {
@@ -60,9 +60,9 @@ void Game::round() {
 		}
 
 		if (answer1 > 0) {
-			player1->extractCard(answer1)->apply(tableCards1, &sum1);
+			cards1->add(player1->extractCard(answer1 - 1));
 		} else if (answer1 == 0) {
-			generator->getHandCard()->apply(tableCards1, &sum1);
+			cards1->add(generator->getHandCard());
 		} else if (answer1 == -1) {
 			next1 = 0;
 		}
@@ -74,33 +74,28 @@ void Game::round() {
 		}
 
 		if (answer2 > 0) {
-			player2->extractCard(answer2)->apply(tableCards2, &sum2);
+			cards2->add(player2->extractCard(answer2 - 1));
 		} else if (answer2 == 0) {
-			generator->getHandCard()->apply(tableCards2, &sum2);
+			cards2->add(generator->getHandCard());
 		} else if (answer2 == -1) {
 			next2 = 0;
 		}
 
 		gui->print();
 	}
-	if (sum1 >= 20) {
-		victor2++;
-	} else if (sum2 >= 20) {
-		victor1++;
+	if (cards1->getPrice() >= 20) {
+		victor2 += 1;
+	} else if (cards2->getPrice() >= 20) {
+		victor1 += 1;
 	}
-
-	sum1 = 0;
-	sum2 = 0;
-	deleteTableCards(tableCards1);
-	deleteTableCards(tableCards2);
 }
 
 int Game::getSum1() const{
-	return sum1;
+	return cards1->getPrice();
 }
 
 int Game::getSum2() const{
-	return sum2;
+	return cards2->getPrice();
 }
 
 int Game::getVictor1() const{
@@ -113,36 +108,15 @@ int Game::getVictor2() const{
 
 
 void Game::printCard1(int index) {
-	if (index < int(tableCards1->size())) {
-		cout << *(*tableCards1)[index];
-	}
-	else {
-		cout << "   ";
-	}
+	((CardSet *)cards1)->print(index);
 }
 
 void Game::printCard2(int index) {
-	if (index < int(tableCards2->size())) {
-		cout << *(*tableCards2)[index];
-	}
-	else {
-		cout << " ";
-	}
-}
-
-void Game::deleteTableCards(vector<CardBase *> *cards) {
-	for (unsigned int i = 0; i < cards->size(); ++i) {
-		delete (*cards)[i];
-	}
-	cards->clear();
+	((CardSet *)cards2)->print(index);
 }
 
 Game::~Game() {
-	deleteTableCards(tableCards1);
-	delete(tableCards1);
-
-	deleteTableCards(tableCards2);
-	delete(tableCards2);
-
+	delete cards1;
+	delete cards2;
 	delete(gui);
 }
