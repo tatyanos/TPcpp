@@ -4,6 +4,7 @@
 #include "cards\Card.h"
 #include "Player.h"
 #include "MonitorGUI.h"
+#include "MonitorBase.h"
 
 class Game {
 private:
@@ -13,8 +14,8 @@ private:
 	Card *cards1;
 	Card *cards2;
 
-	MonitorGUI *gui;
 	void round();
+	vector<MonitorBase *> observers;
 
 public:
 	Game (Player*, Player*);
@@ -26,6 +27,8 @@ public:
 	int getVictor2() const;
 	void printCard1(int);
 	void printCard2(int);
+	void addObserever(MonitorBase *);
+	void notify();
 };
 
 #endif

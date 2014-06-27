@@ -2,6 +2,7 @@
 #include "cards/Card.h"
 #include "cards/CardSet.h"
 #include "cards/CardGenerator.h"
+#include "MonitorGUI.h"
 
 #include <iostream>
 using namespace std;
@@ -10,7 +11,6 @@ const unsigned int PLAYER_CARDS = 4;
 const unsigned int VICTORY = 3;
 
 Game::Game(Player *player1, Player *player2) {
-	gui = new MonitorGUI(player1, player2, this);
 
 	this->player1 = player1;
 	this->player2 = player2;
@@ -51,12 +51,12 @@ void Game::round() {
 	cards1->add(generator->getHandCard());
 	cards2->add(generator->getHandCard());
 
-	gui->print();
+	notify();
 	while (cards1->getPrice() < 20 && cards1->getPrice() < 20) {
 
 		int answer1, answer2;
 		if (next1) {
-			answer1 = gui->getTurn();
+			answer1 = MonitorGUI::getTurn();
 		}
 
 		if (answer1 > 0) {
@@ -67,10 +67,10 @@ void Game::round() {
 			next1 = 0;
 		}
 
-		gui->print();
+		notify();
 
 		if (next2) {
-			answer2 = gui->getTurn();
+			answer2 = MonitorGUI::getTurn();
 		}
 
 		if (answer2 > 0) {
@@ -81,7 +81,7 @@ void Game::round() {
 			next2 = 0;
 		}
 
-		gui->print();
+		notify();
 	}
 	if (cards1->getPrice() >= 20) {
 		victor2 += 1;
@@ -115,8 +115,17 @@ void Game::printCard2(int index) {
 	((CardSet *)cards2)->print(index);
 }
 
+void Game::addObserever(MonitorBase *observer) {
+	observers.push_back(observer);
+}
+
+void Game::notify() {
+	for (unsigned int i = 0; i < observers.size(); ++i) {
+		observers[i]->update();
+	}
+}
+
 Game::~Game() {
 	delete cards1;
 	delete cards2;
-	delete(gui);
 }

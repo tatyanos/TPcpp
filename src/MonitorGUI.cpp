@@ -44,6 +44,10 @@ void MonitorGUI::clear() {
 #endif
 }
 
+void MonitorGUI::update() {
+	print();
+}
+
 unsigned int MonitorGUI::getTurn() {
 	cout << "your turn:" << endl;
 	unsigned int answer;
