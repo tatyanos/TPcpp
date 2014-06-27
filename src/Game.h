@@ -1,7 +1,7 @@
 #ifndef Game_H
 #define Game_H
 
-#include "cards\Card.h"
+#include "cards/Card.h"
 #include "Player.h"
 #include "MonitorGUI.h"
 #include "MonitorBase.h"

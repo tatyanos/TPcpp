@@ -4,7 +4,7 @@
 #include <string>
 #include <vector>
 
-#include "cards\Card.h"
+#include "cards/Card.h"
 
 class CardBase;
 
